@@ -1,7 +1,8 @@
-1615-binary-tree-async-iterator
+1616-binary-tree-async-iterator
 =============================
 
 Шаблонный репозиторий задания "Реализация асинхронного итератора по бинарному дереву"
+http://jira-test.nic.etu/jira/browse/LEARNING_CENTER-1616
 
 Tests
 =====
