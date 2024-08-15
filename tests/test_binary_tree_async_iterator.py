@@ -15,9 +15,24 @@ class TestAsyncIteratorWithoutGenerator(unittest.IsolatedAsyncioTestCase):
         cls.root.left.left = TreeNode(5)
 
 
-    async def test_post_order(self):
+    async def test_post_order_async_for(self):
         expected_result = [5, 4, 3, 2, 1]
         result = [item async for item in AsyncIteratorWithoutGenerator(self.root)]
+
+        self.assertEqual(expected_result, result)
+
+    async def test_async_for(self):
+        expected_count = 5
+        count = 0
+        async for _ in AsyncIteratorWithoutGenerator(self.root):
+            count += 1
+            
+        self.assertEqual(expected_count, count)
+
+    async def test_post_order_anext(self):
+        iterator = AsyncIteratorWithoutGenerator(self.root)
+        expected_result = [5, 4, 3, 2, 1]
+        result = [await anext(iterator) for _ in range(len(expected_result))]
 
         self.assertEqual(expected_result, result)
 
@@ -28,9 +43,7 @@ class TestAsyncIteratorWithoutGenerator(unittest.IsolatedAsyncioTestCase):
             while True:
                 await anext(iterator)
 
-    async def test_async_for(self):
-        async for _ in AsyncIteratorWithoutGenerator(self.root):
-            pass
+
 
 
 if __name__ == '__main__':
