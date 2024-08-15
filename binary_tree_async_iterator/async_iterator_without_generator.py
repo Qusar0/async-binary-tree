@@ -1,4 +1,4 @@
-from tree_node import TreeNode
+from binary_tree_async_iterator.tree_node import TreeNode
 
 class AsyncIteratorWithoutGenerator:
     """Реализация без использования асинхронного генератора."""
