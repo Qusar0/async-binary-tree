@@ -1,5 +1,6 @@
 from binary_tree_async_iterator.tree_node import TreeNode
 
+
 class AsyncIteratorWithoutGenerator:
     """Реализация без использования асинхронного генератора."""
 
@@ -27,4 +28,3 @@ class AsyncIteratorWithoutGenerator:
                     return await self.last_visited.get_value()
 
         raise StopAsyncIteration
-
