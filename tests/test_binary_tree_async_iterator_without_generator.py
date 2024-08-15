@@ -1,5 +1,4 @@
 import unittest
-from binary_tree_async_iterator.async_iterator_with_generator import AsyncIteratorWithGenerator
 from binary_tree_async_iterator.async_iterator_without_generator import AsyncIteratorWithoutGenerator
 from binary_tree_async_iterator.tree_node import TreeNode
 
@@ -41,6 +40,23 @@ class TestAsyncIteratorWithoutGenerator(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(StopAsyncIteration):
             while True:
                 await anext(iterator)
+
+    async def test_empty_tree(self):
+        empty_root = None
+        iterator = AsyncIteratorWithoutGenerator(empty_root)
+
+        with self.assertRaises(StopAsyncIteration):
+            await anext(iterator)
+
+    async def test_single_node_tree(self):
+        single_node_tree = TreeNode(42)
+        iterator = AsyncIteratorWithoutGenerator(single_node_tree)
+
+        value = await anext(iterator)
+        self.assertEqual(value, 42)
+
+        with self.assertRaises(StopAsyncIteration):
+            await anext(iterator)
 
 
 if __name__ == '__main__':
