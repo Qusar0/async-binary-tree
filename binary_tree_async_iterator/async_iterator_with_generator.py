@@ -1,5 +1,6 @@
 from binary_tree_async_iterator.tree_node import TreeNode
 
+
 async def postorder_generator(root: TreeNode):
     """ Асинхронный генератор."""
     if root is not None:
@@ -12,6 +13,7 @@ async def postorder_generator(root: TreeNode):
                 yield value          
 
         yield await root.get_value()
+
 
 class AsyncIteratorWithGenerator:
     """Реализация с использованием асинхронного генератора."""
