@@ -1,5 +1,6 @@
 import asyncio
 
+
 class TreeNode:
     """Узел бинарного дерева."""
 
